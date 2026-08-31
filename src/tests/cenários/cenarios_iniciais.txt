@@ -1,0 +1,19 @@
+[ESTES SÃO OS CENÁRIOS QUE UM ALUNO INICIANTE PROVAVELMENTE ESCREVERIA, SEM PENSAR AINDA NOS LIMITES EXATOS COMO 18 OU 500]
+
+Cenários de Teste Pensados (Fase 1 - Ingénua):
+
+Cenário 1: Tudo Perfeito (Caminho Feliz)
+- Dados: Idade = 25, Score = 800
+- Esperado: Aprovado
+
+Cenário 2: Tem idade, mas o score é muito baixo
+- Dados: Idade = 30, Score = 200
+- Esperado: Recusado
+
+Cenário 3: É muito novo, mas tem score alto (imaginando um cenário)
+- Dados: Idade = 15, Score = 900
+- Esperado: Erro (Menor de idade)
+
+Cenário 4: É muito novo e também tem score baixo
+- Dados: Idade = 10, Score = 100
+- Esperado: Erro (Menor de idade)
