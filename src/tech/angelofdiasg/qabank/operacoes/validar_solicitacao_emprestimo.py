@@ -1,26 +1,46 @@
-# Crie uma função chamada validar_solicitacao_emprestimo que valide se uma solicitação de empréstimo pode ser aprovada no QaBank.
-
-# Regra de negócio:
-
-# O cliente deve ter pelo menos 18 anos.
-# O score de crédito deve ser maior ou igual a 650.
-# O salário mensal deve ser maior que zero.
-# O valor solicitado deve ser maior que zero.
-# O valor solicitado não pode ultrapassar 10 vezes o salário mensal.
-# A dívida mensal não pode comprometer mais de 40% da renda do cliente.
-# Se o cliente for menor de idade, a função deve lançar exceção.
-# Se qualquer dado obrigatório estiver ausente, nulo ou em formato inválido, a função deve tratar como erro de entrada.
-# Se o score for insuficiente, o salário for inválido, o valor do empréstimo for inválido, ou a dívida comprometer mais de 40% da renda, o resultado deve ser "Recusado".
-# Se todas as condições forem atendidas, o resultado deve ser "Aprovado".
+import math
 
 
-# Critérios de aceitação:
+def validar_solicitacao_emprestimo(
+	idade,
+	score_credito,
+	salario_mensal,
+	valor_solicitado,
+	divida_mensal,
+):
+	"""Valida se uma solicitação de empréstimo pode ser aprovada."""
+	dados = (
+		idade,
+		score_credito,
+		salario_mensal,
+		valor_solicitado,
+		divida_mensal,
+	)
 
-# Menor de 18 anos → exceção
-# Score abaixo de 650 → "Recusado"
-# Salário menor ou igual a zero → "Recusado"
-# Valor do empréstimo menor ou igual a zero → "Recusado"
-# Valor do empréstimo acima de 10x o salário → "Recusado"
-# Dívida mensal acima de 40% da renda → "Recusado"
-# Dados inválidos ou ausentes → erro de validação
-# Tudo válido → "Aprovado"
+	if any(
+		not isinstance(dado, (int, float))
+		or isinstance(dado, bool)
+		or not math.isfinite(dado)
+		for dado in dados
+	):
+		raise ValueError("Dados da solicitação inválidos")
+
+	if idade < 18:
+		raise ValueError("Menor de idade não permitido")
+
+	if score_credito < 650:
+		return "Recusado"
+
+	if salario_mensal <= 0:
+		return "Recusado"
+
+	if valor_solicitado <= 0:
+		return "Recusado"
+
+	if valor_solicitado > salario_mensal * 10:
+		return "Recusado"
+
+	if divida_mensal > salario_mensal * 0.4:
+		return "Recusado"
+
+	return "Aprovado"

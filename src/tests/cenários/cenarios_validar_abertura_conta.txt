@@ -1,0 +1,21 @@
+Cenários de Teste para validar_abertura_conta:
+
+Cenário 1: Cliente atende exatamente aos limites mínimos
+- Dados: Idade = 18, Score = 600, Renda mensal = 1500, Primeiro depósito = 100, Possui negativado = False
+- Esperado: Aprovado
+
+Cenário 2: Score fica um ponto abaixo do mínimo
+- Dados: Idade = 25, Score = 599, Renda mensal = 2000, Primeiro depósito = 100, Possui negativado = False
+- Esperado: Recusado
+
+Cenário 3: Cliente não possui renda mensal
+- Dados: Idade = 30, Score = 800, Renda mensal = 0, Primeiro depósito = 100, Possui negativado = False
+- Esperado: Recusado
+
+Cenário 4: Cliente não realiza o primeiro depósito
+- Dados: Idade = 30, Score = 800, Renda mensal = 2000, Primeiro depósito = 0, Possui negativado = False
+- Esperado: Recusado
+
+Cenário 5: Cliente menor de idade mesmo com os demais dados válidos
+- Dados: Idade = 17, Score = 800, Renda mensal = 2000, Primeiro depósito = 100, Possui negativado = False
+- Esperado: Erro (Menor de idade não permitido)

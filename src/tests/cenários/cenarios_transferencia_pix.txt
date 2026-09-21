@@ -1,0 +1,12 @@
+Cenário 1
+- Valor do pix > 0
+- Exemplo: Saldo = 1000, Valor do pix = 200, Conta destino = "123456", Limite diário = 500, Horário = 14
+
+Cenário 2
+- Conta destino NOT NULL
+- Exemplo: Saldo = 1000, Valor do pix = 200, Conta destino = None, Limite diário = 500, Horário = 14
+
+Cenário 3
+- Valor de transferência > 0 ou <= Valor_saldo_atual
+- Exemplo: Saldo = 100, Valor da transferência = 200, Conta destino = "123456", Limite diário = 500, Horário = 14
+

@@ -14,15 +14,13 @@ def validar_transferencia_pix(
     - Transferência só pode ocorrer em horário comercial.
     """
 
-    if saldo_conta < valor_transferencia:
+    if valor_transferencia <= 0:
         return "Recusado"
 
-    if valor_transferencia <= 0:
+    if saldo_conta < valor_transferencia:
         return "Recusado"
 
     if valor_transferencia > limite_diario:
         return "Recusado"
 
-    # Brecha intencional:
-    # A validação da conta de destino e do horário de operação foi esquecida.
     return "Aprovado"
